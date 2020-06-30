@@ -3,7 +3,7 @@ import React from "react";
 //Data
 import products from "../products"
 //Styles
-import styles from "../styles"
+import { List } from "../styles";
 //ProductItem
 import ProductItem from "./ProductItem"
 
@@ -14,8 +14,8 @@ const ProductList = () => {
 
     ));
     return (
-        <div style={styles.list}> {productList}</div>
+        <List> {productList}</List>
     );
 };
 
-export default ProductList
+export default ProductList;
