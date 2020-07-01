@@ -52,8 +52,10 @@ const ThemeButton = styled.button`
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
-
-export { Title, Desc, ShopImage, List, ProductImage, GlobalStyle, ThemeButton };
+const DeleteButtonStyled = styled.p`
+color: red;
+`
+export { Title, Desc, ShopImage, List, ProductImage, GlobalStyle, ThemeButton, DeleteButtonStyled };
 
 
 
