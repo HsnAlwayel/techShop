@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,21 +7,37 @@ import './App.css';
 import ProductList from "./components/ProductList";
 //Styles
 import styled from "styled-components";
-import { Title, Desc, ShopImage, GlobalStyle } from "./styles";
+import { Title, Desc, ShopImage, GlobalStyle, ThemeButton } from "./styles";
 import { ThemeProvider } from "styled-components";
 //Data
 import products from "./products";
 
 const theme = {
-  mainColor: "blue", // main font color
-  backgroundColor: "black", // main background color
-  color: "blue",
+  light: {
+    text: "Dark Mode",
+    mainColor: "#242424", // main font color
+    backgroundColor: "#fefafb", // main background color
+    color: "#ff85a2",
+  },
+  dark: {
+    text: "Light Mode",
+    mainColor: "#fefafb", // main font color
+    backgroundColor: "#242424", // main background color
+    color: "#ff85a2",
+  },
 };
 
+
+
 function App() {
+  let [currentTheme, setCurrentTheme] = useState("light");
+  const toggleTheme = () => {
+    setCurrentTheme(currentTheme === "light" ? "dark" : "light");
+  };
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />                {/*Header-ShopIntro*/}
+    <ThemeProvider theme={theme[currentTheme]}>
+      <GlobalStyle />
+      <ThemeButton onClick={toggleTheme}> {theme[currentTheme].text} </ThemeButton>
       <Title>Gadget</Title>
       <Desc>something</Desc>
       <ShopImage alt="Tech Shop"

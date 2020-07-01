@@ -44,7 +44,16 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.backgroundColor}
   }
 `;
-export { Title, Desc, ShopImage, List, ProductImage, GlobalStyle };
+const ThemeButton = styled.button`
+  font-size: 3em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
+
+export { Title, Desc, ShopImage, List, ProductImage, GlobalStyle, ThemeButton };
 
 
 
