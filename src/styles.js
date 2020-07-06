@@ -1,26 +1,40 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
-
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: blue;
 `;
-const Desc = styled.h4`
+export const Description = styled.h4`
   text-align: center;
 `;
-const ShopImage = styled.img`
+export const ShopImage = styled.img`
 display: block;
 margin-Left: auto;
 margin-Right: auto;
 width: 28%;
 `;
-const List = styled.div`
+export const List = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
-const ProductImage = styled.div`
+export const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  img {
+    width: 40%;
+    float: left;
+  }
+
+  p {
+    vertical-align: middle;
+  }
+`;
+export const ProductImage = styled.div`
 margin: 20px;
 img {
     display: block;
@@ -38,13 +52,13 @@ p {
   }
 
 `;
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body {
     color: ${(props) => props.theme.mainColor};
     background-color: ${(props) => props.theme.backgroundColor}
   }
 `;
-const ThemeButton = styled.button`
+export const ThemeButton = styled.button`
   font-size: 3em;
   margin: 1.25em;
   padding: 0.25em 1em;
@@ -52,10 +66,10 @@ const ThemeButton = styled.button`
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
-const DeleteButtonStyled = styled.p`
+export const DeleteButtonStyled = styled.p`
 color: red;
 `
-export { Title, Desc, ShopImage, List, ProductImage, GlobalStyle, ThemeButton, DeleteButtonStyled };
+// export { Title, Description, ShopImage, List, ProductImage, GlobalStyle, ThemeButton, DeleteButtonStyled };
 
 
 
