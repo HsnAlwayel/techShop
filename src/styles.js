@@ -69,15 +69,17 @@ export const ThemeButton = styled.button`
 export const DeleteButtonStyled = styled.p`
 color: red;
 `
-// export { Title, Description, ShopImage, List, ProductImage, GlobalStyle, ThemeButton, DeleteButtonStyled };
+export const SearchBarStyled = styled.input`
+padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+`
 
 
 
 
 
-
-
-// --------------------
 
 
 

@@ -1,13 +1,18 @@
 import React from "react";
+import DeleteButton from "./Buttons/DeleteButton"
+import { Link, useParams } from "react-router-dom";
+//styles
 import { DeleteButtonStyled, DetailWrapper } from "../styles"
 
 const ProductDetail = (props) => {
-    const product = props.product;
-    const handleDelete = () => {
-        props.deleteProduct(product.id);
-    }
+    const { productId } = useParams();
+    const product = props.products.find((product) => product.id === productId)
+
     return (
         <DetailWrapper>
+            <Link to="/products">
+                <p>Back to products</p>
+            </Link>
             <h1>{product.name}</h1>
             <img
                 src={product.image}
@@ -15,7 +20,7 @@ const ProductDetail = (props) => {
             />
             <p>{product.desc}</p>
             <p>{product.price}</p>
-            <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+            <DeleteButton productId={product.id} deleteProduct={props.deleteProduct} />
         </DetailWrapper>
     );
 };
