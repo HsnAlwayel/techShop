@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
 export const Title = styled.h1`
   text-align: center;
@@ -15,9 +16,9 @@ margin-Right: auto;
 width: 28%;
 `;
 export const List = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // display: flex;
 `;
 export const DetailWrapper = styled.div`
   display: block;
@@ -35,7 +36,7 @@ export const DetailWrapper = styled.div`
   }
 `;
 export const ProductImage = styled.div`
-margin: 20px;
+// margin: 20px;
 img {
     display: block;
     margin-Left: auto;
@@ -60,7 +61,6 @@ export const GlobalStyle = createGlobalStyle`
 `;
 export const ThemeButton = styled.button`
   font-size: 3em;
-  margin: 1.25em;
   padding: 0.25em 1em;
   border-radius: 3px;
   background-color: ${(props) => props.theme.mainColor};
@@ -76,7 +76,24 @@ padding: 0.5rem;
   width: 40%;
 `
 
+export const Logo = styled(Link)`
+  padding: 0.75em;
 
+  img {
+    width: 5;
+  }
+`;
+export const NavStyled = styled.nav`
+background-color: ${(props) => props.theme.backgroundColor};
+`;
+export const NavItem = styled(NavLink)`
+  padding: 0.25em 1em;
+  color: ${(props) => props.theme.mainColor};
+
+  &.active {
+    color: ${(props) => props.theme.color};
+  }
+`;
 
 
 

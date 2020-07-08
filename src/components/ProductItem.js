@@ -5,11 +5,10 @@ import { ProductImage, DeleteButtonStyled } from "../styles"
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link } from "react-router-dom";
 
-const ProductItem = (props) => {
-    const product = props.product;
+const ProductItem = ({ product, deleteProduct }) => {
 
     return (
-        <ProductImage>
+        <ProductImage className="col-lg-4 col-md-4 col-sm-4">
             <Link to={`/products/${product.id}`}>
                 <img alt={product.name}
                     src={product.image}
@@ -17,7 +16,7 @@ const ProductItem = (props) => {
             </Link>
             <p >{product.name}</p>
             <p className="product-price">{product.price} KD</p>
-            <DeleteButton productId={product.id} deleteProduct={props.deleteProduct} />
+            <DeleteButton productId={product.id} deleteProduct={deleteProduct} />
         </ProductImage>
     );
 };

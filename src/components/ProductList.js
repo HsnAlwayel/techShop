@@ -8,27 +8,26 @@ import products from "../products"
 //ProductItem
 import ProductItem from "./ProductItem"
 
-const ProductList = (props) => {
-    const _products = props._products;
+const ProductList = ({ _products, deleteProduct }) => {
 
     const [query, setQuery] = useState("")
     const filteredProduct = _products
-        .filter((product) => product.name.includes(query)
+        .filter((product) => product.name.toLowerCase().includes(query.toLowerCase())
         );
 
     const productList = filteredProduct.map((product) => (
         <ProductItem
             product={product}
             key={product.id}
-            deleteProduct={props.deleteProduct}
+            deleteProduct={deleteProduct}
         />
     ));
 
     return (
-        <>
+        <div className="container-fluid">
             <SearchBar setQuery={setQuery} />
-            <List> {productList}</List>
-        </>
+            <List className="row"> {productList}</List>
+        </div>
     );
 };
 
