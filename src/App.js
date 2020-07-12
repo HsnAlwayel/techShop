@@ -36,11 +36,17 @@ function App() {
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
+
   const [_products, setProduct] = useState(products);
   const deleteProduct = (productId) => {
     const updatedProduct = _products.filter((product) => product.id !== productId);
     setProduct(updatedProduct);
   };
+
+  const createProduct = (newProduct) => {
+    setProduct([..._products, newProduct]);
+  };
+
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
@@ -57,8 +63,10 @@ function App() {
           />
         </Route>
         <Route path="/products">
-          <ProductList _products={_products}
-            deleteProduct={deleteProduct} />
+          <ProductList
+            _products={_products}
+            deleteProduct={deleteProduct}
+            createProduct={createProduct} />
         </Route>
         <Route exact path="/">
           <Home />

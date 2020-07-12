@@ -7,7 +7,6 @@ import { DeleteButtonStyled, DetailWrapper } from "../styles"
 const ProductDetail = ({ products, deleteProduct }) => {
     const { productId } = useParams();
     const product = products.find((product) => product.id === productId)
-
     if (!product) return <Redirect to="/products" />
 
     return (

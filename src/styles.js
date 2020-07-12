@@ -94,6 +94,15 @@ export const NavItem = styled(NavLink)`
     color: ${(props) => props.theme.color};
   }
 `;
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
+`;
 
 
 
