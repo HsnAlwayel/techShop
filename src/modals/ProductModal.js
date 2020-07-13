@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import { CreateButtonStyled } from "../styles"
+// Stores
+import productsStore from "../stores/ProductStore";
 
-const ProductModal = ({ isOpen, closeModal, createProduct }) => {
+const ProductModal = ({ isOpen, closeModal }) => {
     const customStyles = {
         content: {
             top: '50%',
@@ -28,7 +30,7 @@ const ProductModal = ({ isOpen, closeModal, createProduct }) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        createProduct(product);
+        productsStore.createProduct(product);
         closeModal();
     };
 

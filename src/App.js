@@ -13,8 +13,7 @@ import { ThemeProvider } from "styled-components";
 //ProductList
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail"
-//Data
-import products from "./products";
+
 
 const theme = {
   light: {
@@ -37,15 +36,6 @@ function App() {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
 
-  const [_products, setProduct] = useState(products);
-  const deleteProduct = (productId) => {
-    const updatedProduct = _products.filter((product) => product.id !== productId);
-    setProduct(updatedProduct);
-  };
-
-  const createProduct = (newProduct) => {
-    setProduct([..._products, newProduct]);
-  };
 
 
   return (
@@ -58,15 +48,11 @@ function App() {
       <Switch>
         <Route path="/products/:productId">
           <ProductDetail
-            products={_products}
-            deleteProduct={deleteProduct}
           />
         </Route>
         <Route path="/products">
           <ProductList
-            _products={_products}
-            deleteProduct={deleteProduct}
-            createProduct={createProduct} />
+          />
         </Route>
         <Route exact path="/">
           <Home />

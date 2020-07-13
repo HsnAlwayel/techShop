@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
 //Components
 import SearchBar from "./SearchBar"
 import ProductModal from "../modals/ProductModal"
+// Stores
+import productsStore from "../stores/ProductStore";
 //Styles
 import { List } from "../styles";
 import { BsPlusCircle } from "react-icons/bs";
@@ -12,17 +15,16 @@ import products from "../products"
 import ProductItem from "./ProductItem"
 import AddButton from "./Buttons/AddButton";
 
-const ProductList = ({ _products, deleteProduct, createProduct }) => {
+const ProductList = () => {
 
     const [query, setQuery] = useState("")
-    const filteredProduct = _products
+    const filteredProduct = productsStore.products
         .filter((product) => product.name.toLowerCase().includes(query.toLowerCase())
         );
     const productList = filteredProduct.map((product) => (
         <ProductItem
             product={product}
             key={product.id}
-            deleteProduct={deleteProduct}
         />
     ));
 
@@ -32,9 +34,9 @@ const ProductList = ({ _products, deleteProduct, createProduct }) => {
         <div className="container-fluid">
             <SearchBar setQuery={setQuery} />
             <List className="row"> {productList}</List>
-            <AddButton createProduct={createProduct} />
+            <AddButton />
         </div>
     );
 };
 
-export default ProductList;
+export default observer(ProductList);

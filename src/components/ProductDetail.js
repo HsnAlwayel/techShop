@@ -1,12 +1,14 @@
 import React from "react";
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link, useParams, Redirect } from "react-router-dom";
+// Stores
+import productsStore from "../stores/ProductStore";
 //styles
 import { DeleteButtonStyled, DetailWrapper } from "../styles"
 
-const ProductDetail = ({ products, deleteProduct }) => {
+const ProductDetail = () => {
     const { productId } = useParams();
-    const product = products.find((product) => product.id === productId)
+    const product = productsStore.products.find((product) => product.id === productId)
     if (!product) return <Redirect to="/products" />
 
     return (
@@ -21,7 +23,7 @@ const ProductDetail = ({ products, deleteProduct }) => {
             />
             <p>{product.desc}</p>
             <p>{product.price}</p>
-            <DeleteButton productId={product.id} deleteProduct={deleteProduct} />
+            <DeleteButton productId={product.id} />
         </DetailWrapper>
     );
 };

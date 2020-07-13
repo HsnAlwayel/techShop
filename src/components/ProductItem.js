@@ -5,7 +5,7 @@ import { ProductImage, DeleteButtonStyled } from "../styles"
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link } from "react-router-dom";
 
-const ProductItem = ({ product, deleteProduct }) => {
+const ProductItem = ({ product }) => {
 
     return (
         <ProductImage className="col-lg-4 col-md-4 col-sm-4">
@@ -16,7 +16,7 @@ const ProductItem = ({ product, deleteProduct }) => {
             </Link>
             <p >{product.name}</p>
             <p className="product-price">{product.price} KD</p>
-            <DeleteButton productId={product.id} deleteProduct={deleteProduct} />
+            <DeleteButton productId={product.id} />
         </ProductImage>
     );
 };
