@@ -1,9 +1,11 @@
 import React from "react";
+import { observer } from "mobx-react";
 //Styles
 import styles from "../styles";
 import { ProductImage, DeleteButtonStyled } from "../styles"
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link } from "react-router-dom";
+import UpdateButton from "./Buttons/UpdateButton";
 
 const ProductItem = ({ product }) => {
 
@@ -16,9 +18,10 @@ const ProductItem = ({ product }) => {
             </Link>
             <p >{product.name}</p>
             <p className="product-price">{product.price} KD</p>
+            <UpdateButton product={product} />
             <DeleteButton productId={product.id} />
         </ProductImage>
     );
 };
 
-export default ProductItem;
+export default observer(ProductItem);

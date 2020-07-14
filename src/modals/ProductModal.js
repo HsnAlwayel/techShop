@@ -4,33 +4,33 @@ import { CreateButtonStyled } from "../styles"
 // Stores
 import productsStore from "../stores/ProductStore";
 
-const ProductModal = ({ isOpen, closeModal }) => {
-    const customStyles = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)'
-        }
-    };
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
 
-    const [product, setProduct] = useState({
-        name: "",
-        price: 0,
-        description: "",
-        image: "",
-        id: 100,
-        slug: "newItem"
-    });
+const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
+    const [product, setProduct] = useState(
+        oldProduct ? oldProduct : {
+            name: "",
+            price: 0,
+            description: "",
+            image: "",
+        }
+    )
 
     const handleChange = (event) => {
         setProduct({ ...product, [event.target.name]: event.target.value });
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        productsStore.createProduct(product);
+        productsStore[oldProduct ? "updateProduct" : "createProduct"](product);
         closeModal();
     };
 
@@ -46,22 +46,22 @@ const ProductModal = ({ isOpen, closeModal }) => {
                 <div className="form-group row">
                     <div className="col-6">
                         <label>Name</label>
-                        <input type="text" name="name" className="form-control" onChange={handleChange} required />
+                        <input type="text" name="name" className="form-control" onChange={handleChange} required value={product.name} />
                     </div>
                     <div className="col-6">
                         <label>Price</label>
-                        <input type="number" min="1" name="price" className="form-control" onChange={handleChange} required />
+                        <input type="number" min="1" name="price" className="form-control" onChange={handleChange} required value={product.price} />
                     </div>
                 </div>
                 <div className="form-group">
                     <label>Description</label>
-                    <input type="text" name="description" className="form-control" onChange={handleChange} required />
+                    <input type="text" name="desc" className="form-control" onChange={handleChange} required value={product.desc} />
                 </div>
                 <div className="form-group">
                     <label>Image</label>
-                    <input type="text" name="image" className="form-control" onChange={handleChange} required />
+                    <input type="text" name="image" className="form-control" onChange={handleChange} required value={product.image} />
                 </div>
-                <CreateButtonStyled className="btn float-right">Create</CreateButtonStyled>
+                <CreateButtonStyled className="btn float-right">Save</CreateButtonStyled>
             </form>
         </Modal>
 

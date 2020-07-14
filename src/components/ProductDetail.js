@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link, useParams, Redirect } from "react-router-dom";
+import { observer } from "mobx-react";
 // Stores
 import productsStore from "../stores/ProductStore";
 //styles
@@ -28,4 +29,4 @@ const ProductDetail = () => {
     );
 };
 
-export default ProductDetail;
+export default observer(ProductDetail);
