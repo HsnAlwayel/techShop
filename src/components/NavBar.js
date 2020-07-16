@@ -1,7 +1,9 @@
 import React from "react";
+//Styles
 import { ThemeButton, Logo, NavStyled, NavItem } from "../styles";
 import LogoImg from "../favicon.ico"
-const NavBar = (props) => {
+
+const NavBar = ({ toggleTheme, currentTheme }) => {
     return (
         <NavStyled className="navbar navbar-expand-lg ">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -12,8 +14,8 @@ const NavBar = (props) => {
                     <NavItem className="nav-item nav-link" to="/products">
                         Products
                     </NavItem>
-                    <ThemeButton className="nav-item" onClick={props.toggleTheme}>
-                        {props.currentTheme === "light" ? "Dark" : "Light"} Mode
+                    <ThemeButton className="nav-item" onClick={toggleTheme}>
+                        {currentTheme === "light" ? "Dark" : "Light"} Mode
                         </ThemeButton>
                 </div>
             </div>

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { CreateButtonStyled } from "../styles"
+
 // Stores
 import productsStore from "../stores/ProductStore";
+
+//Styles
+import { CreateButtonStyled } from "../styles"
 
 const customStyles = {
     content: {
@@ -25,9 +28,8 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
         }
     )
 
-    const handleChange = (event) => {
-        setProduct({ ...product, [event.target.name]: event.target.value });
-    };
+    const handleChange = (event) => setProduct({ ...product, [event.target.name]: event.target.value });
+
     const handleSubmit = (event) => {
         event.preventDefault();
         productsStore[oldProduct ? "updateProduct" : "createProduct"](product);

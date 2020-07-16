@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from "./components/Home";
+import { Link } from "react-router-dom";
 import { Route, Switch } from "react-router";
-import { Link, useHistory } from "react-router-dom";
-import LogoImg from "./favicon.ico"
-import NavBar from "./components/NavBar"
-//Styles
-import styled from "styled-components";
-import { Title, Description, ShopImage, GlobalStyle, ThemeButton, Desc, Logo } from "./styles";
-import { ThemeProvider } from "styled-components";
-//ProductList
+
+//Components
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail"
+import Home from "./components/Home";
+import NavBar from "./components/NavBar"
+
+//Styles
+import { GlobalStyle } from "./styles";
+import { ThemeProvider } from "styled-components";
 
 
 const theme = {
@@ -31,28 +29,25 @@ const theme = {
 };
 
 function App() {
-  let [currentTheme, setCurrentTheme] = useState("light");
+  const savedTheme = localStorage.getItem("theme") ?? "light";
+  const [currentTheme, setCurrentTheme] = useState(savedTheme);
+
   const toggleTheme = () => {
-    setCurrentTheme(currentTheme === "light" ? "dark" : "light");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
-
-
 
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
-      <Link to="/products" style={{ margin: 10, float: "right" }}>
-        Products
-      </Link>
       <Switch>
         <Route path="/products/:productId">
-          <ProductDetail
-          />
+          <ProductDetail />
         </Route>
         <Route path="/products">
-          <ProductList
-          />
+          <ProductList />
         </Route>
         <Route exact path="/">
           <Home />

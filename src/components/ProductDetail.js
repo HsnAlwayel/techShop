@@ -2,14 +2,17 @@ import React from "react";
 import DeleteButton from "./Buttons/DeleteButton"
 import { Link, useParams, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-// Stores
-import productsStore from "../stores/ProductStore";
-//styles
-import { DeleteButtonStyled, DetailWrapper } from "../styles"
+
+//Stores
+import productStore from "../stores/ProductStore";
+
+//Styles
+import { DetailWrapper } from "../styles"
 
 const ProductDetail = () => {
     const { productId } = useParams();
-    const product = productsStore.products.find((product) => product.id === productId)
+    const product = productStore.products.find((product) => product.id === +productId)
+
     if (!product) return <Redirect to="/products" />
 
     return (
