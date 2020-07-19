@@ -1,9 +1,18 @@
-import products from "../products"
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
+import axios from "axios";
 
 class ProductStore {
-    products = products;
+    products = [];
+
+    fetchProducts = async () => {
+        try {
+            const response = await axios.get("http://localhost:8000/products");
+            this.products = response.data;
+        } catch (error) {
+            console.error("ProductStore -> fetchProducts -> error", error);
+        }
+    };
 
     createProduct = (newProduct) => {
         newProduct.id = this.products[this.products.length - 1].id + 1;
@@ -26,5 +35,6 @@ decorate(ProductStore, {
 });
 
 const productStore = new ProductStore();
+productStore.fetchProducts();
 
 export default productStore;
