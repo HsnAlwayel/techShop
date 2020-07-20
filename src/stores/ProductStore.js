@@ -25,7 +25,8 @@ class ProductStore {
         for (const key in product) product[key] = updatedProduct[key];
     };
 
-    deleteProduct = (productId) => {
+    deleteProduct = async (productId) => {
+        await axios.delete(`http://localhost:8000/products/${productId}`);
         this.products = this.products.filter((product) => product.id !== productId);
     };
 }
