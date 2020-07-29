@@ -1,5 +1,4 @@
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 class ProductStore {
@@ -16,16 +15,20 @@ class ProductStore {
 
     createProduct = async (newProduct) => {
         try {
-            const res = await axios.post(`http://localhost:8000/products`, newProduct);
+            const formData = new FormData();
+            for (const key in newProduct) formData.append(key, newProduct[key]);
+            const res = await axios.post(`http://localhost:8000/products`, formData);
             this.products.push(res.data);
         } catch (error) { console.log("Product ->create-> error", error); }
     };
 
     updateProduct = async (updatedProduct) => {
         try {
-            await axios.put(`http://localhost:8000/products/${updatedProduct.id}`, updatedProduct);
-            const product = this.products.find((product) => product.id === updatedProduct.id);
-            for (const key in product) product[key] = updatedProduct[key];
+            const formData = new FormData();
+            for (const key in updatedProduct) formData.append(key, updatedProduct[key]);
+            await axios.put(`http://localhost:8000/products/${updatedProduct.id}`, formData);
+            const product = this.products.find((product) => product.id === formData.id);
+            for (const key in product) product[key] = formData[key];
         } catch (error) { console.log("Product->updatedProduct ->error", error) };
     };
 

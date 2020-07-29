@@ -6,16 +6,13 @@ import SearchBar from "./SearchBar"
 import ProductItem from "./ProductItem"
 import AddButton from "./Buttons/AddButton";
 
-// Stores
-import productStore from "../stores/ProductStore";
-
 //Styles
 import { List } from "../styles";
 
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
     const [query, setQuery] = useState("")
-    const productList = (productStore.products
+    const productList = (products
         .filter((product) => product.name.toLowerCase().includes(query.toLowerCase())))
         .map((product) => (
             <ProductItem

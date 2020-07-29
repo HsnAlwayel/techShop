@@ -30,6 +30,8 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
 
     const handleChange = (event) => setProduct({ ...product, [event.target.name]: event.target.value });
 
+    const handleImage = (event) => setProduct({ ...product, image: event.target.files[0] });
+
     const handleSubmit = (event) => {
         event.preventDefault();
         productsStore[oldProduct ? "updateProduct" : "createProduct"](product);
@@ -61,7 +63,7 @@ const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
                 </div>
                 <div className="form-group">
                     <label>Image</label>
-                    <input type="text" name="image" className="form-control" onChange={handleChange} required value={product.image} />
+                    <input type="file" name="image" className="form-control" onChange={handleImage} required />
                 </div>
                 <CreateButtonStyled className="btn float-right">Save</CreateButtonStyled>
             </form>
