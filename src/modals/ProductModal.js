@@ -18,9 +18,10 @@ const customStyles = {
     }
 };
 
-const ProductModal = ({ isOpen, closeModal, oldProduct }) => {
+const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
     const [product, setProduct] = useState(
         oldProduct ? oldProduct : {
+            vendorId,
             name: "",
             price: 0,
             description: "",

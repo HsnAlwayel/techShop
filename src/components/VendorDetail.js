@@ -1,8 +1,13 @@
 import React from "react";
-import DeleteButton from "./Buttons/DeleteButton"
+
+//Components
 import { Link, useParams, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 import ProductList from "./ProductList"
+import AddButton from "./Buttons/AddButton";
+import DeleteButton from "./Buttons/DeleteButton"
+import UpdateButton from "./Buttons/UpdateButton";
+
 //Stores
 import vendorStore from "../stores/VendorStore";
 
@@ -27,11 +32,13 @@ const VendorDetail = () => {
                         src={vendor.image}
                         alt={vendor.name}
                     />
-                    <DeleteButton vendorId={vendor.id} />
+                    <UpdateButton vendor={vendor} />
+                    <DeleteButton vendorId={vendorId} />
                 </DetailWrapper>
             </div>
             <div className="col-12">
                 <ProductList products={vendor.products} />
+                <AddButton vendorId={vendorId} />
             </div>
         </div>
     );

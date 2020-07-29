@@ -3,11 +3,12 @@ import axios from "axios";
 
 class ProductStore {
     products = [];
-
+    loading = [];
     fetchProducts = async () => {
         try {
             const response = await axios.get("http://localhost:8000/products");
             this.products = response.data;
+            this.loading = false;
         } catch (error) {
             console.error("ProductStore -> fetchProducts -> error", error);
         }
@@ -15,9 +16,10 @@ class ProductStore {
 
     createProduct = async (newProduct) => {
         try {
+            console.log(newProduct.vendorId);
             const formData = new FormData();
             for (const key in newProduct) formData.append(key, newProduct[key]);
-            const res = await axios.post(`http://localhost:8000/products`, formData);
+            const res = await axios.post(`http://localhost:8000/vendors/${newProduct.vendorId}/products`, formData);
             this.products.push(res.data);
         } catch (error) { console.log("Product ->create-> error", error); }
     };
@@ -40,6 +42,7 @@ class ProductStore {
 
 decorate(ProductStore, {
     products: observable,
+    loading: observable,
 });
 
 const productStore = new ProductStore();

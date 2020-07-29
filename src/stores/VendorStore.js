@@ -3,11 +3,13 @@ import axios from "axios";
 
 class VendorStore {
     vendors = [];
+    loading = true;
 
     fetchVendors = async () => {
         try {
             const response = await axios.get("http://localhost:8000/vendors");
             this.vendors = response.data;
+            this.loading = false;
         } catch (error) {
             console.error("VendorStore -> fetchVendors -> error", error);
         }
@@ -40,6 +42,7 @@ class VendorStore {
 
 decorate(VendorStore, {
     vendors: observable,
+    loading: observable,
 });
 
 const vendorStore = new VendorStore();

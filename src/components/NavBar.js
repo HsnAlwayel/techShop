@@ -1,6 +1,6 @@
 import React from "react";
 //Styles
-import { ThemeButton, Logo, NavStyled, NavItem } from "../styles";
+import { Logo, NavStyled, NavItem } from "../styles";
 import LogoImg from "../favicon.ico"
 
 const NavBar = ({ toggleTheme, currentTheme }) => {

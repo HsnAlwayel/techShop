@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 //Components
 import ProductModal from "../../modals/ProductModal"
+import VendorModal from "../../modals/VendorModal"
 
 // Styling
 import { UpdateButtonStyled } from "../../styles";
 
-const UpdateButton = ({ product }) => {
+const UpdateButton = ({ product, vendor }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const closeModal = () => setIsOpen(false);
@@ -15,7 +16,12 @@ const UpdateButton = ({ product }) => {
     return (
         <>
             <UpdateButtonStyled onClick={openModal}>Update</UpdateButtonStyled>;
-            <ProductModal isOpen={isOpen} closeModal={closeModal} oldProduct={product} />
+            {vendor ? (
+                <VendorModal isOpen={isOpen} closeModal={closeModal} oldVendor={vendor} />
+            ) : (
+                    <ProductModal isOpen={isOpen} closeModal={closeModal} oldProduct={product} />
+                )
+            }
         </>
     )
 };

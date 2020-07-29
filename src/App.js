@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { Route, Switch } from "react-router";
 import { observer } from "mobx-react";
 
 //Components
-import ProductList from "./components/ProductList";
-import ProductDetail from "./components/ProductDetail"
-import Home from "./components/Home";
 import NavBar from "./components/NavBar"
-import VendorList from './components/VendorList';
-import VendorDetail from './components/VendorDetail';
+import Routes from "./components/Routes"
+import Loading from "./components/Loading"
 
-// Stores
-import productStore from "./stores/ProductStore";
+//Stores
+import vendorStore from './stores/VendorStore';
 
 //Styles
 import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
+import productStore from './stores/ProductStore';
+
 
 
 const theme = {
@@ -33,7 +31,7 @@ const theme = {
   },
 };
 
-function App() {
+function App({ type, color }) {
   const savedTheme = localStorage.getItem("theme") ?? "light";
   const [currentTheme, setCurrentTheme] = useState(savedTheme);
 
@@ -47,23 +45,12 @@ function App() {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
-      <Switch>
-        <Route path="/vendors/:vendorId">
-          <VendorDetail />
-        </Route>
-        <Route path="/vendors">
-          <VendorList />
-        </Route>
-        <Route path="/products/:productId">
-          <ProductDetail />
-        </Route>
-        <Route path="/products">
-          <ProductList products={productStore.products} />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      <Loading theme={theme[currentTheme]} />
+      {/* {vendorStore.loading || productStore.loading ?
+        <Loading />
+        :
+        <Routes />
+      } */}
     </ThemeProvider>
   );
 }
