@@ -1,9 +1,11 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
+
 //Components
-import DeleteButton from "./Buttons/DeleteButton"
+import DeleteButton from "./Buttons/DeleteButton";
 import UpdateButton from "./Buttons/UpdateButton";
+
 //Styles
 import { ProductImage } from "../styles"
 

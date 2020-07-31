@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 
-const Loading = ({ balls, blue }) => {
+const Loading = ({ bars }) => {
     return (
-        <ReactLoading type={balls} color={{ color: "#blue" }} />
+        <ReactLoading type={bars} color={{ color: "#blue" }} />
     )
 };
 

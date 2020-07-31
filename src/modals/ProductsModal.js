@@ -18,10 +18,10 @@ const customStyles = {
     }
 };
 
-const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
+const ProductsModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
     const [product, setProduct] = useState(
         oldProduct ? oldProduct : {
-            vendorId,
+            vendorId: 0,
             name: "",
             price: 0,
             description: "",
@@ -66,6 +66,15 @@ const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
                     <label>Image</label>
                     <input type="file" name="image" className="form-control" onChange={handleImage} />
                 </div>
+                <div class="form-group">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
                 <CreateButtonStyled className="btn float-right">Save</CreateButtonStyled>
             </form>
         </Modal>
@@ -73,4 +82,4 @@ const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
     )
 };
 
-export default ProductModal;
+export default ProductsModal;

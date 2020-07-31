@@ -29,8 +29,8 @@ class VendorStore {
             const formData = new FormData();
             for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
             await axios.put(`http://localhost:8000/vendors/${updatedVendor.id}`, formData);
-            const vendor = this.vendors.find((vendor) => vendor.id === formData.id);
-            for (const key in vendor) vendor[key] = formData[key];
+            const vendor = this.vendors.find((vendor) => vendor.id === updatedVendor.id);
+            for (const key in updatedVendor) vendor[key] = updatedVendor[key];
         } catch (error) { console.log("Vendor->updatedVendor ->error", error) };
     };
 

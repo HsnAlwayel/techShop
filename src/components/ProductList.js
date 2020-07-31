@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 //Components
 import SearchBar from "./SearchBar"
 import ProductItem from "./ProductItem"
-
+import AddButton from "./Buttons/AddButton"
 //Styles
 import { List } from "../styles";
 
@@ -24,6 +24,7 @@ const ProductList = ({ products }) => {
         <div className="container-fluid">
             <SearchBar setQuery={setQuery} />
             <List className="row">{productList}</List>
+            <AddButton />
         </div>
     );
 };

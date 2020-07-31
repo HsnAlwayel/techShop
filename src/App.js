@@ -45,12 +45,11 @@ function App({ type, color }) {
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar toggleTheme={toggleTheme} currentTheme={currentTheme} />
-      <Loading theme={theme[currentTheme]} />
-      {/* {vendorStore.loading || productStore.loading ?
+      {vendorStore.loading || productStore.loading ?
         <Loading />
         :
         <Routes />
-      } */}
+      }
     </ThemeProvider>
   );
 }

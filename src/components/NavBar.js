@@ -1,4 +1,5 @@
 import React from "react";
+
 //Styles
 import { Logo, NavStyled, NavItem } from "../styles";
 import LogoImg from "../favicon.ico"
@@ -11,15 +12,17 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                     <Logo className="nav-item nav-link active" to="/">
                         <img alt="logo" src={LogoImg} width="50" />
                     </Logo>
-                    <NavItem className="nav-item nav-link" to="/vendors">
-                        Vendors
+                    <div className="ml-auto navbar-nav float-right">
+                        <NavItem className="nav-item nav-link" to="/vendors">
+                            Vendors
                     </NavItem>
-                    <NavItem className="nav-item nav-link" to="/products">
-                        Products
+                        <NavItem className="nav-item nav-link" to="/products">
+                            Products
                     </NavItem>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1" />
-                        <label class="custom-control-label" for="customSwitch1" onClick={toggleTheme}> {currentTheme === "light" ? "Dark" : "Light"} Mode</label>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" className="custom-control-input" id="customSwitch1" />
+                            <label className="custom-control-label" for="customSwitch1" onClick={toggleTheme}> {currentTheme === "light" ? "Dark" : "Light"} Mode</label>
+                        </div>
                     </div>
                 </div>
             </div>

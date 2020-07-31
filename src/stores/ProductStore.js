@@ -29,8 +29,8 @@ class ProductStore {
             const formData = new FormData();
             for (const key in updatedProduct) formData.append(key, updatedProduct[key]);
             await axios.put(`http://localhost:8000/products/${updatedProduct.id}`, formData);
-            const product = this.products.find((product) => product.id === formData.id);
-            for (const key in product) product[key] = formData[key];
+            const product = this.products.find((product) => product.id === updatedProduct.id);
+            for (const key in updatedProduct) product[key] = updatedProduct[key];
         } catch (error) { console.log("Product->updatedProduct ->error", error) };
     };
 
