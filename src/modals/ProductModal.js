@@ -18,10 +18,9 @@ const customStyles = {
     }
 };
 
-const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
+const ProductModal = ({ isOpen, closeModal, oldProduct, vendor }) => {
     const [product, setProduct] = useState(
         oldProduct ? oldProduct : {
-            vendorId,
             name: "",
             price: 0,
             description: "",
@@ -35,7 +34,7 @@ const ProductModal = ({ isOpen, closeModal, oldProduct, vendorId }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        productsStore[oldProduct ? "updateProduct" : "createProduct"](product);
+        productsStore[oldProduct ? "updateProduct" : "createProduct"](product, vendor);
         closeModal();
     };
 

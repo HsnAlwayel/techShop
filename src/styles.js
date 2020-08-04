@@ -16,9 +16,9 @@ margin-Right: auto;
 width: 28%;
 `;
 export const List = styled.div`
-  // align-items: center;
-  // justify-content: center;
-  // display: flex;
+ align-items: center;
+ justify-content: center;
+ display: flex;
 `;
 export const DetailWrapper = styled.div`
   display: block;

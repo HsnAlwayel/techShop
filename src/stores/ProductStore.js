@@ -14,13 +14,19 @@ class ProductStore {
         }
     };
 
-    createProduct = async (newProduct) => {
+
+    getProductById = (productId) => {
+        console.log(this.products.find((product) => product.id === productId));
+        return this.products.find((product) => product.id === productId);
+    }
+
+    createProduct = async (newProduct, vendor) => {
         try {
-            console.log(newProduct.vendorId);
             const formData = new FormData();
             for (const key in newProduct) formData.append(key, newProduct[key]);
-            const res = await axios.post(`http://localhost:8000/vendors/${newProduct.vendorId}/products`, formData);
+            const res = await axios.post(`http://localhost:8000/vendors/${vendor.id}/products`, formData);
             this.products.push(res.data);
+            vendor.products.push({ id: res.data.id });
         } catch (error) { console.log("Product ->create-> error", error); }
     };
 
@@ -29,6 +35,7 @@ class ProductStore {
             const formData = new FormData();
             for (const key in updatedProduct) formData.append(key, updatedProduct[key]);
             await axios.put(`http://localhost:8000/products/${updatedProduct.id}`, formData);
+
             const product = this.products.find((product) => product.id === updatedProduct.id);
             for (const key in updatedProduct) product[key] = updatedProduct[key];
         } catch (error) { console.log("Product->updatedProduct ->error", error) };

@@ -10,6 +10,7 @@ import UpdateButton from "./Buttons/UpdateButton";
 
 //Stores
 import vendorStore from "../stores/VendorStore";
+import productStore from "../stores/ProductStore";
 
 //Styles
 import { DetailWrapper } from "../styles"
@@ -17,6 +18,12 @@ import { DetailWrapper } from "../styles"
 const VendorDetail = () => {
     const { vendorId } = useParams();
     const vendor = vendorStore.vendors.find((vendor) => vendor.id === +vendorId)
+
+    const products = vendor.products.map((product) =>
+        productStore.getProductById(product.id)
+    ).filter((product) => product)
+
+    console.log(products);
 
     if (!vendor) return <Redirect to="/vendors" />
 
@@ -37,8 +44,8 @@ const VendorDetail = () => {
                 </DetailWrapper>
             </div>
             <div className="col-12">
-                <ProductList products={vendor.products} />
-                <AddButton vendorId={vendorId} />
+                <ProductList products={products} />
+                <AddButton vendor={vendor} />
             </div>
         </div>
     );
