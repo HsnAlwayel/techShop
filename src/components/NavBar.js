@@ -3,6 +3,7 @@ import React from "react";
 //Styles
 import { Logo, NavStyled, NavItem } from "../styles";
 import LogoImg from "../favicon.ico"
+import SignupButton from "./Buttons/SignupButton";
 
 const NavBar = ({ toggleTheme, currentTheme }) => {
     return (
@@ -18,7 +19,10 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                     </NavItem>
                         <NavItem className="nav-item nav-link" to="/products">
                             Products
-                    </NavItem>
+                        </NavItem>
+                        <div>
+                            <SignupButton />
+                        </div>
                         <div class="custom-control custom-switch">
                             <input type="checkbox" className="custom-control-input" id="customSwitch1" />
                             <label className="custom-control-label" for="customSwitch1" onClick={toggleTheme}> {currentTheme === "light" ? "Dark" : "Light"} Mode</label>
