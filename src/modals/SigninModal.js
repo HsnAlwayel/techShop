@@ -60,13 +60,13 @@ const SigninModal = ({ isOpen, closeModal, oldUser }) => {
                         <input
                             name="password"
                             value={user.password}
-                            type="text"
+                            type="password"
                             className="form-control"
                             onChange={handleChange}
                         />
                     </div>
                     <CreateButtonStyled className="btn float-right" type="submit">
-                        Sign up
+                        Signin
                     </CreateButtonStyled>
                 </form>
             </Modal>

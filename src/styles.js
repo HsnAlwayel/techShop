@@ -56,7 +56,9 @@ p {
 export const GlobalStyle = createGlobalStyle`
   body {
     color: ${(props) => props.theme.mainColor};
-    background-color: ${(props) => props.theme.backgroundColor}
+    background-color: ${(props) => props.theme.backgroundColor};
+    /* background-image: url("https://i1.wp.com/www.trizmaneuro.com/wp-content/uploads/2016/05/grey-background-wallpaper-0.jpg") */
+    
   }
 `;
 export const ThemeButton = styled.button`
@@ -115,7 +117,9 @@ export const AuthButtonStyled = styled.button`
     background-color: ___CSS_0___;
     color: ___CSS_1___;
 `;
-
+export const UsernameStyled = styled.p`
+  padding: 0.25em 1em;
+`;
 
 
 

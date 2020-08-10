@@ -27,6 +27,7 @@ const SignupModal = ({ isOpen, closeModal, oldUser }) => {
             username: "",
             password: "",
             email: "",
+            role: "vendor"
         }
     )
 
@@ -96,7 +97,7 @@ const SignupModal = ({ isOpen, closeModal, oldUser }) => {
                         <input
                             name="password"
                             value={user.password}
-                            type="text"
+                            type="password"
                             className="form-control"
                             onChange={handleChange}
                         />
