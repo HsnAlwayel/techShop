@@ -1,5 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class VendorStore {
     vendors = [];
@@ -7,7 +7,7 @@ class VendorStore {
 
     fetchVendors = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/vendors");
+            const response = await instance.get("/vendors");
             this.vendors = response.data;
             this.loading = false;
         } catch (error) {
@@ -19,7 +19,7 @@ class VendorStore {
         try {
             const formData = new FormData();
             for (const key in newVendor) formData.append(key, newVendor[key]);
-            const res = await axios.post(`http://localhost:8000/vendors`, formData);
+            const res = await instance.post(`/vendors`, formData);
             this.vendors.push(res.data);
         } catch (error) { console.log("Vendor ->create-> error", error); }
     };
@@ -28,14 +28,14 @@ class VendorStore {
         try {
             const formData = new FormData();
             for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
-            await axios.put(`http://localhost:8000/vendors/${updatedVendor.id}`, formData);
+            await instance.put(`/vendors/${updatedVendor.id}`, formData);
             const vendor = this.vendors.find((vendor) => vendor.id === updatedVendor.id);
             for (const key in updatedVendor) vendor[key] = updatedVendor[key];
         } catch (error) { console.log("Vendor->updatedVendor ->error", error) };
     };
 
     deleteVendor = async (vendorId) => {
-        await axios.delete(`http://localhost:8000/vendors/${vendorId}`);
+        await instance.delete(`/vendors/${vendorId}`);
         this.vendors = this.vendors.filter((vendor) => vendor.id !== vendorId);
     };
 }

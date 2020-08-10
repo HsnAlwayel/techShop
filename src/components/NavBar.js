@@ -4,6 +4,7 @@ import React from "react";
 import { Logo, NavStyled, NavItem } from "../styles";
 import LogoImg from "../favicon.ico"
 import SignupButton from "./Buttons/SignupButton";
+import SigninButton from "./Buttons/SigninButton";
 
 const NavBar = ({ toggleTheme, currentTheme }) => {
     return (
@@ -21,6 +22,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                             Products
                         </NavItem>
                         <div>
+                            <SigninButton />
                             <SignupButton />
                         </div>
                         <div class="custom-control custom-switch">

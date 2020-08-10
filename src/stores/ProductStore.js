@@ -1,12 +1,12 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+import instance from "./instance";
 
 class ProductStore {
     products = [];
     loading = [];
     fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/products");
+            const response = await instance.get("/products");
             this.products = response.data;
             this.loading = false;
         } catch (error) {
@@ -24,7 +24,7 @@ class ProductStore {
         try {
             const formData = new FormData();
             for (const key in newProduct) formData.append(key, newProduct[key]);
-            const res = await axios.post(`http://localhost:8000/vendors/${vendor.id}/products`, formData);
+            const res = await instance.post(`/vendors/${vendor.id}/products`, formData);
             this.products.push(res.data);
             vendor.products.push({ id: res.data.id });
         } catch (error) { console.log("Product ->create-> error", error); }
@@ -34,7 +34,7 @@ class ProductStore {
         try {
             const formData = new FormData();
             for (const key in updatedProduct) formData.append(key, updatedProduct[key]);
-            await axios.put(`http://localhost:8000/products/${updatedProduct.id}`, formData);
+            await instance.put(`/products/${updatedProduct.id}`, formData);
 
             const product = this.products.find((product) => product.id === updatedProduct.id);
             for (const key in updatedProduct) product[key] = updatedProduct[key];
@@ -42,7 +42,7 @@ class ProductStore {
     };
 
     deleteProduct = async (productId) => {
-        await axios.delete(`http://localhost:8000/products/${productId}`);
+        await instance.delete(`/products/${productId}`);
         this.products = this.products.filter((product) => product.id !== productId);
     };
 }
