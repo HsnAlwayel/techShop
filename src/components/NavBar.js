@@ -6,6 +6,7 @@ import authStore from "../stores/authStore";
 //Styles
 import { Logo, NavStyled, NavItem, UsernameStyled } from "../styles";
 import LogoImg from "../favicon.ico"
+import { FiLogOut } from "react-icons/fi";
 
 //Components
 import SignupButton from "./Buttons/SignupButton";
@@ -22,7 +23,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                     </Logo>
 
                     {
-                        authStore.user && authStore.user.role === "vendor"(
+                        authStore.user && authStore.user.role === "vendor" && (
                             <div className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 <NavItem className="nav-item nav-link" to="/vendors">
                                     Vendors
@@ -37,7 +38,10 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
 
                     {
                         authStore.user ? (
-                            <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
+                            <>
+                                <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
+                                <FiLogOut onClick={authStore.signout} size="2em" color="red" />
+                            </>
                         ) : (
                                 <>
                                     <SigninButton />

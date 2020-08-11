@@ -24,7 +24,7 @@ const ProductList = ({ products }) => {
             />
         ));
 
-    if (!authStore.user) return <Redirect to="/" />;
+    if (!authStore.user || authStore.user.role !== "admin") return <Redirect to="/" />;
     return (
         <div className="container-fluid">
             <SearchBar setQuery={setQuery} />

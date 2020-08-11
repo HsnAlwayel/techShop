@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
+import { Redirect } from "react-router-dom";
 
 //Components
 import SearchBar from "./SearchBar"
@@ -8,6 +9,8 @@ import AddButton from "./Buttons/AddButton";
 
 // Stores
 import vendorStore from "../stores/VendorStore";
+import authStore from "../stores/authStore";
+
 
 //Styles
 import { List } from "../styles";
@@ -23,6 +26,8 @@ const VendorList = () => {
                 key={vendor.id}
             />
         ));
+
+    if (!authStore.user || authStore.user.role !== "vendor") return <Redirect to="/" />;
 
     return (
         <div className="container-fluid">
