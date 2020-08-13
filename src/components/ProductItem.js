@@ -13,7 +13,7 @@ const ProductItem = ({ product }) => {
 
     return (
         <ProductImage className="col-lg-4 col-md-4 col-sm-4">
-            <Link to={`/products/${product.id}`}>
+            <Link to={`/products/${product.slug}`}>
                 <img alt={product.name} src={product.image} />
             </Link>
             <p >{product.name}</p>

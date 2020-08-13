@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Stores
 import authStore from "../stores/authStore";
@@ -9,11 +9,17 @@ import LogoImg from "../favicon.ico"
 import { FiLogOut } from "react-icons/fi";
 
 //Components
-import SignupButton from "./Buttons/SignupButton";
 import SigninButton from "./Buttons/SigninButton";
 import { observer } from "mobx-react";
+import VendorModal from "../modals/VendorModal";
 
 const NavBar = ({ toggleTheme, currentTheme }) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const closeModal = () => setIsOpen(false);
+    const openModal = () => setIsOpen(true);
+
     return (
         <NavStyled className="navbar navbar-expand-lg ">
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -23,7 +29,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                     </Logo>
 
                     {
-                        authStore.user && authStore.user.role === "vendor" && (
+                        authStore.user && authStore.user.role === "admin" && (
                             <div className="navbar-nav ml-auto mt-2 mt-lg-0">
                                 <NavItem className="nav-item nav-link" to="/vendors">
                                     Vendors
@@ -45,13 +51,21 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                         ) : (
                                 <>
                                     <SigninButton />
-                                    <SignupButton />
                                 </>
                             )
                     }
 
+                    <div>
 
+                        {
+                            authStore.user && !authStore.user.bakerySlug && (
+                                <UsernameStyled onClick={openModal}>Create a Vendor</UsernameStyled>
+                            )
+                        }
+                        <VendorModal isOpen={isOpen} closeModal={closeModal} />;
+                    </div>
                     <div class="custom-control custom-switch">
+
                         <input type="checkbox" className="custom-control-input" id="customSwitch1" />
                         <label className="custom-control-label" for="customSwitch1" onClick={toggleTheme}> {currentTheme === "light" ? "Dark" : "Light"} Mode</label>
                     </div>

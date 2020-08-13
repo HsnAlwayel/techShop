@@ -34,30 +34,6 @@ const AddButton = ({ vendor }) => {
     );
 };
 
-//     switch (location.pathname) {
-//         case `/vendors`:
-//             return (<div>
-//                 <BsPlusCircle className="float-right" size="2em" onClick={() => setIsOpen(true)}
-//                 />
-//                 <VendorModal isOpen={isOpen} closeModal={closeModal} />
-//             </div>
-//             );
-
-//         case `/vendors/${vendor}`:
-//             return (<div>
-//                 <BsPlusCircle className="float-right" size="2em" onClick={() => setIsOpen(true)}
-//                 />
-//                 <ProductModal isOpen={isOpen} closeModal={closeModal} vendor={vendor} />
-//             </div>
-//             );
-//         case `/products`:
-//             return (<div>
-//                 <BsPlusCircle className="float-right" size="2em" onClick={() => setIsOpen(true)}
-//                 />
-//                 <ProductsModal isOpen={isOpen} closeModal={closeModal} />
-//             </div>);
-//     }
-// }
 
 
 

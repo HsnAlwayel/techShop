@@ -1,9 +1,21 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { observer } from "mobx-react";
+
+//Stores
+import authStore from "../stores/authStore";
 
 //Styles
 import { ShopImage, Title } from "../styles";
 
 const Home = () => {
+    if (!authStore.user) {
+        return <Redirect to="/" />;
+    }
+    if (authStore.user.vendorSlug) {
+        return <Redirect to={`/vendors/${authStore.user.vendorSlug}`} />;
+    }
+
     return (
         <>
             <Title>Gadget</Title>
@@ -13,4 +25,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default observer(Home);

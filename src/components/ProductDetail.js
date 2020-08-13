@@ -10,8 +10,8 @@ import productStore from "../stores/ProductStore";
 import { DetailWrapper } from "../styles"
 
 const ProductDetail = () => {
-    const { productId } = useParams();
-    const product = productStore.products.find((product) => product.id === +productId)
+    const { productSlug } = useParams();
+    const product = productStore.products.find((product) => product.slug === productSlug)
 
     if (!product) return <Redirect to="/products" />
 

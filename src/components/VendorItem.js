@@ -13,7 +13,7 @@ const VendorItem = ({ vendor }) => {
 
     return (
         <ProductImage className="col-lg-4 col-md-4 col-sm-4">
-            <Link to={`/vendors/${vendor.id}`}>
+            <Link to={`/vendors/${vendor.slug}`}>
                 <img alt={vendor.name} src={vendor.image} />
             </Link>
             <p >{vendor.name}</p>

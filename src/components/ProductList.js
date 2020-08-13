@@ -15,6 +15,7 @@ import authStore from "../stores/authStore";
 
 const ProductList = ({ products }) => {
     const [query, setQuery] = useState("")
+
     const productList = (products
         .filter((product) => product.name.toLowerCase().includes(query.toLowerCase())))
         .map((product) => (
@@ -24,7 +25,6 @@ const ProductList = ({ products }) => {
             />
         ));
 
-    if (!authStore.user || authStore.user.role !== "admin") return <Redirect to="/" />;
     return (
         <div className="container-fluid">
             <SearchBar setQuery={setQuery} />

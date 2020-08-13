@@ -9,7 +9,7 @@ const SigninButton = () => {
     const openModal = () => setIsOpen(true);
     return (
         <>
-            <AuthButtonStyled onClick={openModal}>Sign in</AuthButtonStyled>;
+            <AuthButtonStyled onClick={openModal}>Sign in</AuthButtonStyled>
             <SigninModal isOpen={isOpen} closeModal={closeModal} />
         </>
     )

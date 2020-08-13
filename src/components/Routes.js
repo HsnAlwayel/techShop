@@ -7,20 +7,23 @@ import ProductDetail from "./ProductDetail"
 import Home from "./Home";
 import VendorList from './VendorList';
 import VendorDetail from './VendorDetail';
-
+import SignupForm from './SignupForm';
 // Stores
 import productStore from "../stores/ProductStore";
 
 const Routes = () => {
     return (
         <Switch>
-            <Route path="/vendors/:vendorId">
+            <Route path="/signup">
+                <SignupForm />
+            </Route>
+            <Route path="/vendors/:vendorSlug">
                 <VendorDetail />
             </Route>
             <Route path="/vendors">
                 <VendorList />
             </Route>
-            <Route path="/products/:productId">
+            <Route path="/products/:productSlug">
                 <ProductDetail />
             </Route>
             <Route path="/products">

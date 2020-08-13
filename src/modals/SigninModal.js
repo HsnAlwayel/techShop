@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 // Stores
 import authStore from "../stores/authStore";
+
+//Components
+import SignupButton from "../components/Buttons/SignupButton";
+
 
 //Styles
 import { CreateButtonStyled } from "../styles"
@@ -53,6 +58,7 @@ const SigninModal = ({ isOpen, closeModal, oldUser }) => {
                             type="text"
                             className="form-control"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -63,7 +69,11 @@ const SigninModal = ({ isOpen, closeModal, oldUser }) => {
                             type="password"
                             className="form-control"
                             onChange={handleChange}
+                            required
                         />
+                    </div>
+                    <div >
+                        <Link to="/signup" onClick={closeModal}><p>Create a new User</p></Link>
                     </div>
                     <CreateButtonStyled className="btn float-right" type="submit">
                         Signin

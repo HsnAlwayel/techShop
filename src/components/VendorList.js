@@ -18,6 +18,7 @@ import { List } from "../styles";
 
 const VendorList = () => {
     const [query, setQuery] = useState("")
+
     const vendorList = (vendorStore.vendors
         .filter((vendor) => vendor.name.toLowerCase().includes(query.toLowerCase())))
         .map((vendor) => (
@@ -27,7 +28,7 @@ const VendorList = () => {
             />
         ));
 
-    if (!authStore.user || authStore.user.role !== "vendor") return <Redirect to="/" />;
+    // if (!authStore.user || authStore.user.role !== "vendor") return <Redirect to="/" />;
 
     return (
         <div className="container-fluid">

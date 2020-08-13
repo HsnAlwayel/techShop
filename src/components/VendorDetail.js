@@ -16,16 +16,17 @@ import productStore from "../stores/ProductStore";
 import { DetailWrapper } from "../styles"
 
 const VendorDetail = () => {
-    const { vendorId } = useParams();
-    const vendor = vendorStore.vendors.find((vendor) => vendor.id === +vendorId)
+    const { vendorSlug } = useParams();
+    const vendor = vendorStore.vendors.find((vendor) => vendor.slug === vendorSlug)
 
-    const products = vendor.products.map((product) =>
-        productStore.getProductById(product.id)
-    ).filter((product) => product)
+    if (!vendor) return <Redirect to="/" />
 
-    console.log(products);
-
-    if (!vendor) return <Redirect to="/vendors" />
+    let products = []
+    if (vendor.products) {
+        products = vendor.products
+            .map((product) => productStore.getProductById(product.id))
+            .filter((product) => product);
+    }
 
     return (
         <div className="row">
@@ -40,13 +41,14 @@ const VendorDetail = () => {
                         alt={vendor.name}
                     />
                     <UpdateButton vendor={vendor} />
-                    <DeleteButton vendorId={vendorId} />
+                    <DeleteButton vendorId={vendor.Id} />
                 </DetailWrapper>
             </div>
             <div className="col-12">
                 <ProductList products={products} />
                 <AddButton vendor={vendor} />
             </div>
+            {console.log(`this is products:${products}`)}
         </div>
     );
 };
