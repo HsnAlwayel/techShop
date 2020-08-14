@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import authStore from "../stores/authStore";
 
 //Components
-import SignupButton from "../components/Buttons/SignupButton";
 
 
 //Styles

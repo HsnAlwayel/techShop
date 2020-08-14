@@ -22,7 +22,6 @@ const AddButton = ({ vendor }) => {
                 onClick={() => setIsOpen(true)}
             />
 
-            {console.log(location.pathname)}
             {vendor ? (
 
                 <ProductModal isOpen={isOpen} closeModal={closeModal} vendor={vendor} />

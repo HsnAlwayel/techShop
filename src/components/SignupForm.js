@@ -9,7 +9,6 @@ import { CreateButtonStyled } from "../styles"
 import authStore from "../stores/authStore";
 
 
-
 const SignupForm = ({ isOpen, closeModal, oldUser }) => {
     const [user, setUser] = useState(
         {

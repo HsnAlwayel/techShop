@@ -7,7 +7,7 @@ import VendorModal from "../../modals/VendorModal"
 // Styling
 import { UpdateButtonStyled } from "../../styles";
 
-const UpdateButton = ({ product, vendor }) => {
+const UpdateButton = ({ product, vendor, productId }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const closeModal = () => setIsOpen(false);
@@ -19,7 +19,9 @@ const UpdateButton = ({ product, vendor }) => {
             {vendor ? (
                 <VendorModal isOpen={isOpen} closeModal={closeModal} oldVendor={vendor} />
             ) : (
-                    <ProductModal isOpen={isOpen} closeModal={closeModal} oldProduct={product} />
+                    <>
+                        <ProductModal isOpen={isOpen} closeModal={closeModal} oldProduct={product} />
+                    </>
                 )
             }
         </>

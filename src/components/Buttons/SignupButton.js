@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-//Modal
-import SignupModal from "../../modals/SignupModal";
+
 
 //Styles
 import { AuthButtonStyled } from "../../styles";
@@ -14,7 +13,6 @@ const SignupButton = () => {
     return (
         <>
             <AuthButtonStyled onClick={openModal}>Sign up</AuthButtonStyled>
-            <SignupModal isOpen={isOpen} closeModal={closeModal} />
         </>
     );
 };

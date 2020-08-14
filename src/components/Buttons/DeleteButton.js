@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 //Store
 import productStore from "../../stores/ProductStore";
@@ -12,6 +13,7 @@ const DeleteButton = ({ productId, vendorId }) => {
     const handleDelete = () => {
         if (productId) {
             productStore.deleteProduct(productId);
+            console.log("handleDelete -> productId", productId)
         } else {
             vendorStore.deleteVendor(vendorId);
         }
@@ -21,4 +23,4 @@ const DeleteButton = ({ productId, vendorId }) => {
         <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
     )
 };
-export default DeleteButton
+export default observer(DeleteButton)

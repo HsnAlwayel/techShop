@@ -7,10 +7,6 @@ import ProductItem from "./ProductItem"
 import AddButton from "./Buttons/AddButton"
 //Styles
 import { List } from "../styles";
-import { Redirect } from "react-router-dom";
-
-//Stores
-import authStore from "../stores/authStore";
 
 
 const ProductList = ({ products }) => {

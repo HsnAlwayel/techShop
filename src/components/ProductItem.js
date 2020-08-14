@@ -20,6 +20,7 @@ const ProductItem = ({ product }) => {
             <p className="product-price">{product.price} KD</p>
             <UpdateButton product={product} />
             <DeleteButton productId={product.id} />
+            {console.log("ProductItem -> product.id", product.id)}
         </ProductImage>
     );
 };

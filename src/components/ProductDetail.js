@@ -28,6 +28,7 @@ const ProductDetail = () => {
             <p>{product.desc}</p>
             <p>{product.price}</p>
             <DeleteButton productId={product.id} />
+
         </DetailWrapper>
     );
 };

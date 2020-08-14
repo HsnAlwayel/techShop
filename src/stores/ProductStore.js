@@ -16,7 +16,6 @@ class ProductStore {
 
 
     getProductById = (productId) => {
-        console.log(this.products.find((product) => product.id === productId));
         return this.products.find((product) => product.id === productId);
     }
 

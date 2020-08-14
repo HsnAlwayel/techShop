@@ -1,5 +1,6 @@
 import { decorate, observable } from "mobx";
 import instance from "./instance";
+import authStore from "./authStore";
 
 class VendorStore {
     vendors = [];
@@ -21,6 +22,7 @@ class VendorStore {
             for (const key in newVendor) formData.append(key, newVendor[key]);
             const res = await instance.post(`/vendors`, formData);
             this.vendors.push(res.data);
+            authStore.user.vendorSlug = res.data.slug
         } catch (error) { console.log("Vendor ->create-> error", error); }
     };
 

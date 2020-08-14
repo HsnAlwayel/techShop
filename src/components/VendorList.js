@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Redirect } from "react-router-dom";
 
 //Components
 import SearchBar from "./SearchBar"
@@ -9,7 +8,6 @@ import AddButton from "./Buttons/AddButton";
 
 // Stores
 import vendorStore from "../stores/VendorStore";
-import authStore from "../stores/authStore";
 
 
 //Styles

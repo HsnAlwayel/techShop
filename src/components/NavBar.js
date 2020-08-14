@@ -58,7 +58,7 @@ const NavBar = ({ toggleTheme, currentTheme }) => {
                     <div>
 
                         {
-                            authStore.user && !authStore.user.bakerySlug && (
+                            authStore.user && !authStore.user.vendorSlug && (
                                 <UsernameStyled onClick={openModal}>Create a Vendor</UsernameStyled>
                             )
                         }

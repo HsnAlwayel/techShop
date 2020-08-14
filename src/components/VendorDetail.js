@@ -48,7 +48,6 @@ const VendorDetail = () => {
                 <ProductList products={products} />
                 <AddButton vendor={vendor} />
             </div>
-            {console.log(`this is products:${products}`)}
         </div>
     );
 };
