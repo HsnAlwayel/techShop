@@ -79,10 +79,9 @@ padding: 0.5rem;
 `
 
 export const Logo = styled(Link)`
-  padding: 0.75em;
-
   img {
     width: 5;
+    margin-right:1em;
   }
 `;
 export const NavStyled = styled.nav`
@@ -112,10 +111,8 @@ export const UpdateButtonStyled = styled.p`
 export const AuthButtonStyled = styled.button`
     font-size: 1em;
     padding: 0.25em 1em;
-    margin-left: 0.5em;
+
     border-radius: 3px;
-    background-color: ___CSS_0___;
-    color: ___CSS_1___;
 `;
 export const UsernameStyled = styled.p`
   padding: 0.25em 1em;
